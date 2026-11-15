@@ -1,9 +1,28 @@
-﻿# Data, XML et Web Services
+﻿# Partie 2 – Opérateur télécom
 
-Activité pratique N°1 : DTD, XSD et XSLT. Chaque projet est dans sa propre branche.
+Clients, abonnements et factures d'un opérateur : validation par **DTD** et transformation **XSLT** vers HTML.
 
-| Projet | Branche |
+## Fichiers
+
+| Fichier | Rôle |
 |---|---|
-| Partie 1 – Bibliothèque (DTD + XSLT) | [partie1-biblio](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie1-biblio) |
-| Partie 2 – Opérateur télécom (DTD + XSLT) | [partie2-operateur](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie2-operateur) |
-| Partie 3 – Relevé de comptes (DTD + XSD + XSLT) | [partie3-releve-comptes](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie3-releve-comptes) |
+| `operateur.dtd` | Structure : `operateur (client+)` → `client (abonnement+)` → `abonnement (facture+)` → `facture` (vide) |
+| `operateur.xml` | Données (2 clients, 3 abonnements, 7 factures) |
+| `operateur.xsl` | Feuille de style XSLT |
+| `operateur.html` | Résultat de la transformation |
+| `newProject.xpr` | Projet Oxygen XML |
+
+## DTD
+
+- `client` : `code` (NMTOKEN), `nom`
+- `abonnement` : `num` (NMTOKEN), `type` ∈ {`GSM`, `FIXE`} (défaut `FIXE`), `dateAb`
+- `facture` : `numFact` (NMTOKEN), `dateFact`, `montant`, `reglee` ∈ {`oui`, `non`} (défaut `non`)
+
+## Transformation
+
+Pour chaque client : un tableau de ses abonnements (numéro, type, date) avec le **total des factures** de chaque abonnement (`sum(facture/@montant)`).
+
+## Résultat
+
+![Résultat operateur.html](screenshots/operateur.png)
+
