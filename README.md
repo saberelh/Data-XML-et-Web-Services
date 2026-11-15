@@ -1,9 +1,41 @@
-﻿# Data, XML et Web Services
+﻿# Partie 3 – Relevé de comptes
 
-Activité pratique N°1 : DTD, XSD et XSLT. Chaque projet est dans sa propre branche.
+Relevé bancaire validé de **deux manières** (DTD et XSD), puis transformé en HTML avec XSLT.
 
-| Projet | Branche |
+## Fichiers
+
+| Fichier | Rôle |
 |---|---|
-| Partie 1 – Bibliothèque (DTD + XSLT) | [partie1-biblio](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie1-biblio) |
-| Partie 2 – Opérateur télécom (DTD + XSLT) | [partie2-operateur](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie2-operateur) |
-| Partie 3 – Relevé de comptes (DTD + XSD + XSLT) | [partie3-releve-comptes](https://github.com/saberelh/Data-XML-et-Web-Services/tree/partie3-releve-comptes) |
+| `releve.dtd` | Validation par DTD |
+| `releve.xml` | XML lié à la DTD (`<!DOCTYPE releve SYSTEM "releve.dtd">`) |
+| `releve.xsd` | Validation par XML Schema |
+| `Releve_xsd.xml` | XML lié au schéma (`xsi:noNamespaceSchemaLocation="releve.xsd"`) |
+| `releve_totaux.xsl` | Liste des opérations + total crédit et total débit |
+| `releve_credit.xsl` | Liste des opérations de type CREDIT uniquement |
+| `relve_dtd.html` | Résultat obtenu à partir de `releve.xml` (DTD) |
+| `relvee.html` | Résultat obtenu à partir de `Releve_xsd.xml` (XSD) |
+
+## Structure
+
+`releve` (attribut `RIB`) contient `dateReleve`, `solde` et `operations` (`dateDebut`, `dateFin`),
+qui regroupe des `operation` (`type` ∈ {CREDIT, DEBIT}, `date`, `montant`, `description` optionnelle).
+
+## DTD vs XSD
+
+| | DTD | XSD |
+|---|---|---|
+| Types | texte (`CDATA`, `#PCDATA`) | `xsd:date`, `xsd:double`, énumération |
+| Nombre d'opérations | 0 ou plus (`operation*`) | 0 ou plus (`minOccurs="0"`) |
+
+## Résultats
+
+Les deux pages ont été générées avec `releve_credit.xsl`.
+
+**Méthode DTD** (`relve_dtd.html`)
+
+![Résultat DTD](screenshots/releve_dtd.png)
+
+**Méthode XSD** (`relvee.html`)
+
+![Résultat XSD](screenshots/releve_xsd.png)
+
