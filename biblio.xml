@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE biblio SYSTEM "biblio.dtd">
+<biblio>
+    <etudiant code="1" nom="Ahmed" prenom="Kareem" age="23">
+        <livre id="L1" titre="XML" datePret="2026-11-01" rendu="oui"/>
+        <livre id="L2" titre="Java" datePret="2026-11-05" rendu="non"/>
+    </etudiant>
+    <etudiant code="2" nom="Reda" prenom="majed" age="25">
+        <livre id="L1" titre="XML" datePret="2026-11-05" rendu="oui"/>
+        <livre id="L3" titre="Oracle" datePret="2026-11-02" rendu="oui"/>
+    </etudiant>
+    <etudiant code="3" nom="Samya" prenom="Rochdi" age="24">
+        <livre id="L1" titre="Algebre Math" datePret="2026-10-29" rendu="oui"/>
+        <livre id="L3" titre="DataBase" datePret="2026-11-01" rendu="oui"/>
+    </etudiant>
+</biblio>

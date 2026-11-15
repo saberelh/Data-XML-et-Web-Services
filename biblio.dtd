@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclaration de la structure des éléments -->
+<!ELEMENT biblio (etudiant+)>
+<!ELEMENT etudiant (livre*)>
+<!ELEMENT livre EMPTY>
+
+<!-- Déclaration des attributs de l'élément etudiant -->
+<!ATTLIST etudiant
+    code CDATA #REQUIRED
+    nom CDATA #REQUIRED
+    prenom CDATA #REQUIRED
+    age CDATA #REQUIRED>
+
+<!-- Déclaration des attributs de l'élément livre -->
+<!ATTLIST livre
+    id CDATA #REQUIRED
+    titre CDATA #REQUIRED
+    datePret CDATA #REQUIRED
+    rendu (oui|non) "non">
