@@ -61,8 +61,6 @@ java -jar saxon-he.jar -s:meteo.xml -xsl:meteo_svg.xsl -o:meteo_svg.html
 ### 1. Le XML source doit être `meteo.xml`
 Le XSL cherche `meteo/mesure[1]/ville`. Si on le lance sur un autre fichier (par exemple `meteo.xsd`), il ne trouve rien : le graphique reste vide et le titre affiche « Relevé du : ) ».
 
-![Erreur : mauvais fichier source](screenshots/erreur_mauvais_xml.png)
-
 ### 2. Ne rien écrire en dehors des balises
 Une ligne de texte placée avant `<svg>` dans le XSL est copiée telle quelle dans le résultat et s'affiche sur la page. L'espace de noms se déclare **dans** la balise : `<svg xmlns="http://www.w3.org/2000/svg" ...>`.
 
